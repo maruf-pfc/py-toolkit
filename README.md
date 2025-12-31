@@ -8,6 +8,7 @@ PyToolkit is an open-source, terminal-based super-fast toolkit collection writte
 - **Cross-Platform**: Support for Linux, macOS, and Windows.
 - **Modular Design**: Category-based tool system for easy extension.
 - **Blazing Fast**: Optimized for startup time and execution speed.
+- **[Roadmap](ROADMAP.md)**: Explore planned features and upcoming tools.
 
 ## 📦 Installation
 
