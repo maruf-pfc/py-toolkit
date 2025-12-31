@@ -11,13 +11,16 @@ PyToolkit is an open-source, terminal-based super-fast toolkit collection writte
 
 ## 📦 Installation
 
-To use PyToolkit, you can either download the pre-compiled binary for your system or install it via pip:
+For detailed instructions, see the [Installation Guide](docs/INSTALLATION.md).
 
+Quick start:
 ```bash
 pip install .
 ```
 
 ## 🛠️ Usage
+
+For a full list of commands and examples, see the [Command Reference](docs/COMMANDS.md).
 
 ```bash
 pytoolkit --help
