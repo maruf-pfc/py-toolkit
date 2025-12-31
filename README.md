@@ -6,7 +6,8 @@ PyToolkit is an open-source, terminal-based super-fast toolkit collection writte
 
 - **Single CLI Binary**: Run anywhere without needing Python installed.
 - **Cross-Platform**: Support for Linux, macOS, and Windows.
-- **Modular Design**: Category-based tool system for easy extension.
+- **Categorical CLI**: Organized by groups (system, network, crypto, etc.).
+- **GUI Support**: Visual tools for complex tasks (e.g., Image Resizing).
 - **Blazing Fast**: Optimized for startup time and execution speed.
 - **[Roadmap](ROADMAP.md)**: Explore planned features and upcoming tools.
 

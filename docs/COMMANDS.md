@@ -1,48 +1,53 @@
 # 🛠️ Command Reference
 
-PyToolkit provides several subcommands for different tasks. Use `pytoolkit --help` for a full list.
+PyToolkit utilizes a categorical command structure. Use `pytoolkit [category] --help` for details on specific tools.
 
-## 🖥️ System (`sys-info`)
+## 🖥️ System (`system`)
 
 Utility for monitoring system resources.
 
-### `pytoolkit sys-info info`
+### `pytoolkit system sys-info info`
+Displays a table with CPU usage, memory, and disk stats.
 
-Displays a table with:
-- CPU Usage (%)
-- CPU Cores (logical count)
-- Total and Used Memory
-- Disk Usage
+---
 
 ## 🌐 Network (`network`)
 
-Networking tools.
+Networking and diagnostic tools.
 
-### `pytoolkit network scan [HOST]`
+### `pytoolkit network port-scan scan [HOST]`
+Scans ports on a target host.
+- `--ports`: e.g., "80,443"
+- `--timeout`: seconds (default 1.0)
 
-Scans common ports on a target host.
-- **Options**:
-    - `--ports`: Comma-separated list of ports (default: 80,443,22,3306).
-    - `--timeout`: Connection timeout in seconds (default: 1.0).
+---
 
 ## 🔐 Crypto (`crypto`)
 
-Hashing and cryptographic tools.
+Cryptographic and hashing utilities.
 
-### `pytoolkit crypto sum [TEXT]`
+### `pytoolkit crypto hash sum [TEXT]`
+Generates a hash (SHA256, MD5) for a string.
 
-Generates a hash for a string.
-- **Options**:
-    - `--algo`: Algorithm (sha256, md5, sha1).
+### `pytoolkit crypto hash file [PATH]`
+Generates a hash for a local file.
 
-### `pytoolkit crypto file [PATH]`
-
-Generates a hash for a file (reads in chunks for large files).
+---
 
 ## 🎨 Format (`format`)
 
-Data formatting utilities.
+Data formatting and prettification.
 
-### `pytoolkit format json [DATA]`
+### `pytoolkit format json-pretty json [DATA]`
+Prettifies a JSON string with terminal syntax highlighting.
 
-Prettifies a JSON string with syntax highlighting.
+---
+
+## 🎨 Graphics (`graphics`)
+
+Visual and image processing utilities.
+
+### `pytoolkit graphics img-resize`
+Launches the **GUI Image Resizer**.
+- **Features**: Drag & Drop, Batch Resizing, Aspect Ratio locking.
+- **Note**: Requires a display environment (X11/Wayland).

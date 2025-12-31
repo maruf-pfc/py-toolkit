@@ -6,20 +6,22 @@ First off, thank you for considering contributing to PyToolkit! It's people like
 
 ### Adding New Tools
 
-PyToolkit is designed to be modular. To add a new tool:
-1. Create a new file in `src/pytoolkit/tools/` (e.g., `my_tool.py`).
-2. Implement your logic using `typer`.
-3. Expose a `typer.Typer()` instance as `app`.
-4. The tool will be automatically discovered and registered as a subcommand.
+PyToolkit is designed to be modular and categorical. To add a new tool:
+1. Create a category directory in `src/pytoolkit/tools/` (if it doesn't exist), e.g., `src/pytoolkit/tools/my_category/`.
+2. Add an `__init__.py` to the category folder.
+3. Create your tool file inside, e.g., `my_tool.py`.
+4. Implement your logic using `typer`.
+5. Expose a `typer.Typer()` instance as `app`.
+6. The tool will be automatically discovered and registered as `pytoolkit my-category my-tool`.
 
-Example `my_tool.py`:
+Example `src/pytoolkit/tools/my_category/my_tool.py`:
 ```python
 import typer
 app = typer.Typer(help="My awesome tool description.")
 
 @app.command()
-def do_something():
-    print("Doing something!")
+def run():
+    print("Running my tool!")
 ```
 
 ### Reporting Bugs

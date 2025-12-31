@@ -23,7 +23,7 @@ For tasks that are easier with an interface, PyToolkit will launch a lightweight
 | Tool | Category | Status | Description |
 | :--- | :--- | :--- | :--- |
 | `color-pick` | Graphics | ⏳ Planned | Eyedropper and HEX/RGB palette. |
-| `img-resize` | Graphics | ⏳ Planned | Batch resize images with drag-and-drop. |
+| `img-resize` | Graphics | ✅ Done | Batch resize images with drag-and-drop. |
 | `qr-gen` | Tool | ⏳ Planned | Generate and display QR codes. |
 | `db-explorer` | Dev | ⏳ Planned | SQLite database viewer. |
 | `diff-view` | Dev | ⏳ Planned | Visual file comparison. |
@@ -32,6 +32,7 @@ For tasks that are easier with an interface, PyToolkit will launch a lightweight
 
 ## 🏗️ Infrastructure Roadmap
 
+- [x] **Dynamic Registry**: Support for nested categories and auto-discovery.
 - [ ] **Full Test Suite**: 100% coverage for registry and core logic using `pytest`.
 - [ ] **GitHub Actions**:
     - [ ] `CI`: Automated linting and testing.

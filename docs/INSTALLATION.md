@@ -34,12 +34,21 @@ If you want to contribute or use the latest development version:
     python3 -m venv env
     source ./env/bin/activate
     ```
-3.  Install in editable mode:
+3.  Install dependencies:
     ```bash
+    pip install -r requirements.txt
     pip install -e .
     ```
-    > [!NOTE]
-    > Installing with `-e .` (or `pip install .`) registers the `pytoolkit` command in your environment so you can run it from anywhere.
+
+### 🐧 Linux GUI Requirements
+If you are on Linux and want to use GUI tools (like `graphics img-resize`), you may need to install `tkinter` on your system:
+```bash
+# Ubuntu/Debian
+sudo apt-get install python3-tk
+
+# Fedora
+sudo dnf install python3-tkinter
+```
 
 ## 🛠️ 3. Via pip
 

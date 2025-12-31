@@ -6,18 +6,37 @@ import typer
 def register_tools(app: typer.Typer, tools_package_path: str, tools_package_name: str):
     """
     Dynamically discovers and registers subcommands from the tools package.
-    Each module in the tools package should expose a 'app' or 'tool_app' variable.
+    Supports nested categories (folders) and modules.
     """
+    import os
     package = importlib.import_module(tools_package_name)
+    base_dir = os.path.dirname(package.__file__)
     
-    for loader, module_name, is_pkg in pkgutil.walk_packages(package.__path__):
-        full_module_name = f"{tools_package_name}.{module_name}"
-        module = importlib.import_module(full_module_name)
-        
-        # Check if the module has a 'app' (Typer instance)
-        if hasattr(module, "app") and isinstance(module.app, typer.Typer):
-            # Use the module name as the subcommand name unless specified
-            command_name = getattr(module, "COMMAND_NAME", module_name.replace("_", "-"))
-            app.add_typer(module.app, name=command_name)
-        # Or if it's a single command function decorated with @app.command() in its own app
-        # Typer handles this via add_typer if it's a Typer instance
+    category_apps = {}
+
+    for root, dirs, files in os.walk(base_dir):
+        for file in files:
+            if file.endswith(".py") and file != "__init__.py":
+                rel_path = os.path.relpath(os.path.join(root, file), base_dir)
+                module_rel_name = rel_path.replace(os.path.sep, ".").replace(".py", "")
+                full_module_name = f"{tools_package_name}.{module_rel_name}"
+                
+                try:
+                    module = importlib.import_module(full_module_name)
+                except Exception:
+                    continue
+                
+                if hasattr(module, "app"):
+                    parts = module_rel_name.split('.')
+                    if len(parts) > 1:
+                        category = parts[0]
+                        if category not in category_apps:
+                            cat_app = typer.Typer(help=f"🛠️ {category.capitalize()} tools.")
+                            category_apps[category] = cat_app
+                            app.add_typer(cat_app, name=category)
+                        
+                        # Add tool to category
+                        category_apps[category].add_typer(module.app, name=parts[-1].replace("_", "-"))
+                    else:
+                        # Top level
+                        app.add_typer(module.app, name=module_rel_name.replace("_", "-"))
